@@ -60,8 +60,9 @@ class $CONTROLLER$Controller extends Controller
     {
         try {
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
-            $$SINGULAR$ = $this->repository->create($request->all());
-            return $this->response->created(route('api.app.$SINGULAR$.create'), $$SINGULAR$);
+            $$SINGULAR$ = $this->repository->create($request->all())->toArray();
+            $location = route('$SINGULAR$.show', $$SINGULAR$['id']);
+            return $this->response->created($location, $$SINGULAR$);
         } catch (ValidatorException $e) {
             return response()->json([
                 'error'   => true,
