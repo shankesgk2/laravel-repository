@@ -54,7 +54,7 @@ class $CONTROLLER$Controller extends Controller
     /**
      * Store a newly created resource in storage.
      * @param  $CLASS$CreateRequest $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response 201 Location
      */
     public function store($CLASS$CreateRequest $request)
     {
@@ -87,7 +87,7 @@ class $CONTROLLER$Controller extends Controller
      *
      * @param  $CLASS$UpdateRequest $request
      * @param  string $id
-     * @return Response
+     * @return \Illuminate\Http\Response 201 Location
      */
     public function update($CLASS$UpdateRequest $request, $id)
     {
