@@ -29,6 +29,7 @@ class $CLASS$RepositoryEloquent extends BaseRepository implements $CLASS$Reposit
 
     /**
      * Boot up the repository, pushing criteria
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function boot()
     {
