@@ -43,6 +43,7 @@ class $CONTROLLER$Controller extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * @throws \ErrorException
      */
     public function index()
     {
