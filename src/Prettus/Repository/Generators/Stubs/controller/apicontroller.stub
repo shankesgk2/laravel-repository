@@ -47,8 +47,7 @@ class $CONTROLLER$Controller extends Controller
      */
     public function index()
     {
-        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $$PLURAL$ = $this->repository->orderBy('id', 'DESC')->findWhere(['uid' => request('uid')])->all();
+        $$PLURAL$ = $this->repository->orderBy('id', 'DESC')->all();
         return $this->response->array($$PLURAL$);
     }
 
@@ -62,7 +61,7 @@ class $CONTROLLER$Controller extends Controller
         try {
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
             $$SINGULAR$ = $this->repository->create($request->all())->toArray();
-            $location = route('$SINGULAR$.show', $$SINGULAR$['id']);
+            $location = url()->full() . '/' . $$SINGULAR$['id'];
             return $this->response->created($location, $$SINGULAR$);
         } catch (ValidatorException $e) {
             return response()->json([
@@ -95,7 +94,7 @@ class $CONTROLLER$Controller extends Controller
         try {
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
             $$SINGULAR$ = $this->repository->update($request->all(), $id)->toArray();
-            $location = route('$SINGULAR$.show', $$SINGULAR$['id']);
+            $location = url()->full() . '/' . $$SINGULAR$['id'];
             return $this->response->created($location, $$SINGULAR$);
         } catch (ValidatorException $e) {
             return response()->json([
